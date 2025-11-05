@@ -2,10 +2,8 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/) 
 [![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-orange)](https://scikit-learn.org/stable/) 
 [![Flask](https://img.shields.io/badge/Web-Framework-ff69b4)](https://flask.palletsprojects.com/) 
-[![Deployed on Railway](https://img.shields.io/badge/Deployed-Railway-brightgreen)](https://modelbuildingdemo-production.up.railway.app/predict)
 
 > ⚠️ **Note:** This is an **experimental project** created to explore the process of **machine learning model building and deployment**.  
-> The live demo is hosted on **Railway**: [https://modelbuildingdemo-production.up.railway.app/predict](https://modelbuildingdemo-production.up.railway.app/predict)
 
 ---
 
@@ -31,7 +29,7 @@
 This project demonstrates:
 - ✅ End-to-end ML pipeline (EDA → Feature Engineering → Model Training → Deployment)
 - 🌐 Building and serving a prediction API using Flask
-- ☁️ Deploying the model to the cloud (Railway platform)
+- ☁️ A simple, interactive web interface for real-time predictions.
 
 ---
 
@@ -49,9 +47,12 @@ This project demonstrates:
 ├── models/
 │   ├── ridge.pkl                                   # Trained ML model
 │   └── scaler.pkl                                  # Data scaler for preprocessing
+├── static/
+│   ├── style.css                                   # Stylesheet for the web interface
+│   └── script.js                                   # JavaScript for asynchronous predictions
 ├── templates/
-│   ├── home.html                                   # Web interface homepage
-│   └── index.html                                  # Result page
+│   └── home.html                                   # Web interface homepage
+├── .gitignore                                      # Git ignore file
 ├── application.py                                  # Flask application
 ├── requirements.txt                                # Python dependencies
 └── README.md                                       # Project documentation
@@ -113,10 +114,10 @@ Your app will be running at:
 
 ## 🚀 Usage
 
-* Visit the web interface or directly access the deployed API endpoint:
-  🌐 **Live API:** [https://modelbuildingdemo-production.up.railway.app/predict](https://modelbuildingdemo-production.up.railway.app/predict)
-* Input meteorological parameters to predict whether a **fire is likely**.
-* The model responds with a **binary classification**: `Fire` or `No Fire`.
+* Visit the web interface at `http://127.0.0.1:5000/`.
+* Input the meteorological parameters into the form.
+* Click the "Predict" button to see the prediction result, which will appear on the same page without a reload.
+* The model responds with a **prediction value**.
 
 ---
 
@@ -125,8 +126,8 @@ Your app will be running at:
 1. **Exploratory Data Analysis (EDA)** – Understand feature distributions, correlations, and trends.
 2. **Feature Engineering** – Data cleaning, encoding, scaling, and feature selection.
 3. **Model Training** – Ridge Regression model trained and serialized with `pickle`.
-4. **API Deployment** – Model served with Flask API for real-time predictions.
-5. **Cloud Deployment** – Hosted on [Railway](https://railway.app/) for public access.
+4. **API Deployment** – Model served with a Flask JSON API for real-time predictions.
+5. **Frontend Interface** - A simple HTML, CSS, and vanilla JavaScript interface for user interaction.
 
 ---
 
@@ -138,8 +139,8 @@ Your app will be running at:
 | **Data Analysis**    | Pandas, NumPy, Matplotlib, Seaborn        |
 | **Machine Learning** | scikit-learn                              |
 | **Web Framework**    | Flask                                     |
-| **Frontend**         | HTML, CSS (Jinja2 Templates)              |
-| **Deployment**       | Railway, AWS Elastic Beanstalk (optional) |
+| **Frontend**         | HTML, CSS, Vanilla JavaScript             |
+| **Deployment**       | AWS Elastic Beanstalk (optional)          |
 | **Serialization**    | pickle                                    |
 
 ---
