@@ -47,7 +47,7 @@ This project demonstrates:
 ├── models/
 │   ├── ridge.pkl                                   # Trained ML model
 │   └── scaler.pkl                                  # Data scaler for preprocessing
-├── public/
+├── static/
 │   ├── style.css                                   # Stylesheet for the web interface
 │   └── script.js                                   # JavaScript for asynchronous predictions
 ├── templates/
