@@ -47,7 +47,7 @@ This project demonstrates:
 ├── models/
 │   ├── ridge.pkl                                   # Trained ML model
 │   └── scaler.pkl                                  # Data scaler for preprocessing
-├── static/
+├── public/
 │   ├── style.css                                   # Stylesheet for the web interface
 │   └── script.js                                   # JavaScript for asynchronous predictions
 ├── templates/
@@ -140,7 +140,7 @@ Your app will be running at:
 | **Machine Learning** | scikit-learn                              |
 | **Web Framework**    | Flask                                     |
 | **Frontend**         | HTML, CSS, Vanilla JavaScript             |
-| **Deployment**       | AWS Elastic Beanstalk (optional)          |
+| **Deployment**       | Vercel, AWS Elastic Beanstalk (optional)  |
 | **Serialization**    | pickle                                    |
 
 ---
