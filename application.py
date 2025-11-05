@@ -11,45 +11,42 @@ app = application
 model = pickle.load(open('models/ridge.pkl','rb'))
 scaler = pickle.load(open('models/scaler.pkl','rb'))
 
-@app.route("/predict", methods=['GET','POST'])
+@app.route("/predict", methods=['POST'])
 def predict():
-    if request.method == 'POST':
-        temp = float(request.form.get('temperature'))
-        rh = float(request.form.get('rh'))
-        ws = float(request.form.get('ws'))
-        rain = float(request.form.get('rain'))
-        ffmc = float(request.form.get('ffmc'))
-        dmc = float(request.form.get('dmc'))
-        isi = float(request.form.get('isi'))
-        cls_val = request.form.get('classes')
-        if cls_val=='fire':
-            classes = 1
-        else:
-            classes = 0
-        reg_val = request.form.get('region')
-        if reg_val=='north':
-            region = 1
-        elif reg_val=='south':
-            region = 2
-        elif reg_val=='east':
-            region = 3
-        elif reg_val=='west':
-            region = 4
-        else:
-            region = 0
-
-        new_X = scaler.transform([[temp,rh,ws,rain,ffmc,dmc,isi,classes,region]])
-        res = model.predict(new_X)
-
-        return render_template('home.html', result=res)
-
+    data = request.json
+    temp = float(data.get('temperature'))
+    rh = float(data.get('rh'))
+    ws = float(data.get('ws'))
+    rain = float(data.get('rain'))
+    ffmc = float(data.get('ffmc'))
+    dmc = float(data.get('dmc'))
+    isi = float(data.get('isi'))
+    cls_val = data.get('classes')
+    if cls_val=='fire':
+        classes = 1
     else:
-        return render_template('home.html')
+        classes = 0
+    reg_val = data.get('region')
+    if reg_val=='north':
+        region = 1
+    elif reg_val=='south':
+        region = 2
+    elif reg_val=='east':
+        region = 3
+    elif reg_val=='west':
+        region = 4
+    else:
+        region = 0
+
+    new_X = scaler.transform([[temp,rh,ws,rain,ffmc,dmc,isi,classes,region]])
+    res = model.predict(new_X)
+
+    return jsonify({'prediction': res[0]})
 
 
 @app.route("/")
 def welcome():
-    return render_template('index.html')
+    return render_template('home.html')
 
 if __name__=="__main__":
     app.run(host='0.0.0.0', debug=True)
