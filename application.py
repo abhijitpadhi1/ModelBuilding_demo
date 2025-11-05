@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
-application = Flask(__name__)
+application = Flask(__name__, static_folder='public', static_url_path='')
 app = application
 
 # import the pickle files
